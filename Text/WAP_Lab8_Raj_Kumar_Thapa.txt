@@ -1,0 +1,26 @@
+7 ans: Free variable in context of add() is counter since it is declared outside the function and is also not passed as a parameter but used within.
+var add = (function(){
+	var counter = 0;
+	return function (){
+		return counter += 1;
+	}
+})();
+Here counter is declared outside the function and also not passed as a parameter but the value of counter is incremented inside the function closure.
+9 ans:
+	We need to create a namespace inside the global namespace and transfer all variables and functions inside the created namespace
+	which will remove them from the global namespace. eg:
+	var a = 3;
+	var b = 5;
+	function multiply(a,b) {
+    return a * b;
+	}
+	These are in global namespace which can be removed from global by creating a namespace.
+	var app  = {
+		a : 3,
+		b : 5,
+		multiply: function(a, b) {
+			return a * b;
+		}
+	}
+	The variables a, b and function multiply are removed from global namespace and transfered to app namespace.
+	
